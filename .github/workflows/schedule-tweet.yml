@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Tweet (1st time)
-        run: curl -X GET "https://your-vercel-app.vercel.app/api/tweet"
+        run: curl -X POST "https://your-vercel-app.vercel.app/api/tweet"
 
       - name: Wait 20 seconds
         run: sleep 20
 
       - name: Send Tweet (2nd time)
-        run: curl -X GET "https://your-vercel-app.vercel.app/api/tweet"
+        run: curl -X POST "https://your-vercel-app.vercel.app/api/tweet"
 
       - name: Wait 20 seconds
         run: sleep 20
 
       - name: Send Tweet (3rd time)
-        run: curl -X GET "https://your-vercel-app.vercel.app/api/tweet"
+        run: curl -X POST "https://tweeter-automation-six.vercel.app/tweet"
