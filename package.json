@@ -1,0 +1,22 @@
+{
+  "name": "twitter-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/genai": "^0.6.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "form-data": "^4.0.2",
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.9",
+    "twitter-api-v2": "^1.22.0"
+  }
+}
