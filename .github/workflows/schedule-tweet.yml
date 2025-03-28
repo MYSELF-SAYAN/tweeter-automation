@@ -1,25 +1,13 @@
-name: Tweet Every 20 Seconds
+name: Tweet Every 4 Hours
 
 on:
   schedule:
-    - cron: '*/1 * * * *' 
-  workflow_dispatch: 
+    - cron: '0 */4 * * *'  
+  workflow_dispatch:  
 
 jobs:
   tweet:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Tweet (1st time)
-        run: curl -X POST "https://tweeter-automation-six.vercel.app/tweet"
-
-      - name: Wait 20 seconds
-        run: sleep 20
-
-      - name: Send Tweet (2nd time)
-        run: curl -X POST "https://tweeter-automation-six.vercel.app/tweet"
-
-      - name: Wait 20 seconds
-        run: sleep 20
-
-      - name: Send Tweet (3rd time)
+      - name: Send Tweet (Once every 4 hours)
         run: curl -X POST "https://tweeter-automation-six.vercel.app/tweet"
