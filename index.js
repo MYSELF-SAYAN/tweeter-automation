@@ -43,7 +43,7 @@ const getTweet = async () => {
 const generateImage = async (prompt) => {
     try {
         const imageUrl = `https://ai-image-api.xeven.workers.dev/img?prompt=${encodeURIComponent(prompt)}&model=flux-schnell`;
-        const imagePath = path.join(__dirname, "/tmp/image.jpg");
+        const imagePath = '/tmp/image.jpg';
 
         const response = await axios.get(imageUrl, { responseType: "stream" });
         const writer = fs.createWriteStream(imagePath);
@@ -66,7 +66,7 @@ app.post('/tweet', async (req, res) => {
         const prompt = rp.prompt;
         console.log("Generated Tweet:", tweetText);
         await generateImage(prompt)
-        const imagePath = path.join(__dirname, "/tmp/image.jpg");
+        const imagePath = "/tmp/image.jpg";
         const mediaId = await tweet.v1.uploadMedia(imagePath);
         // const tweetResponse = await twitterClient.v2.tweet(tweetText);
         const tweetResponse = await tweet.v2.tweet({
