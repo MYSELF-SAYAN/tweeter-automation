@@ -32,7 +32,7 @@ const getTweet = async () => {
     });
     const prompt = await ai.models.generateContent({
         model: "gemini-2.0-flash",
-        contents: `Generate a high quality  prompt for generating images based on the following tweet: ${response.candidates[0].content.parts[0].text} it should be kind of meme or message giving type with proper texts and no spelling mistake or no grammatrtical mistake and correct words also texts should perfectly aligned to the prompt and image and just generate prompt not anything else no other text or word should be included and generate one one prompt no need for options`,
+        contents: `Generate a high quality  prompt for generating images based on the following tweet: ${response.candidates[0].content.parts[0].text} it should be kind of meme or message giving type with proper texts and no spelling mistake or no grammatrtical mistake and correct words also texts should perfectly aligned to the prompt and image and just generate prompt not anything else no other text or word should be included and generate one one prompt no need for options and it should not include word Prompt in the starting`,
     })
     const fullResponse = {
         prompt: prompt.candidates[0].content.parts[0].text.replace(/\*/g, ''),
@@ -43,7 +43,7 @@ const getTweet = async () => {
 const generateImage = async (prompt) => {
     try {
         const imageUrl = `https://ai-image-api.xeven.workers.dev/img?prompt=${encodeURIComponent(prompt)}&model=flux-schnell`;
-        const imagePath = path.join(__dirname, "image.jpg");
+        const imagePath = path.join(__dirname, "/tmp/image.jpg");
 
         const response = await axios.get(imageUrl, { responseType: "stream" });
         const writer = fs.createWriteStream(imagePath);
@@ -66,7 +66,7 @@ app.post('/tweet', async (req, res) => {
         const prompt = rp.prompt;
         console.log("Generated Tweet:", tweetText);
         await generateImage(prompt)
-        const imagePath = path.join(__dirname, "image.jpg");
+        const imagePath = path.join(__dirname, "/tmp/image.jpg");
         const mediaId = await tweet.v1.uploadMedia(imagePath);
         // const tweetResponse = await twitterClient.v2.tweet(tweetText);
         const tweetResponse = await tweet.v2.tweet({
