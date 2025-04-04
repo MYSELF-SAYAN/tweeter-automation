@@ -35,5 +35,5 @@ https://github.com/user-attachments/assets/f4e3b6fa-2674-4d85-93d7-2759e2073334
 ## 🛠️ Setup  
 ### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/MYSELF-SAYAN/twitter-auto-poster.git
-cd twitter-auto-poster
+git clone https://github.com/MYSELF-SAYAN/tweeter-automation.git
+cd tweeter-automation
